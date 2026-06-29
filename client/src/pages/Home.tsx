@@ -1,45 +1,38 @@
-import { useState } from "react";
-
 /**
  * ACUindex Investor Room
  * 
- * Design Philosophy:
- * - Pure black background (#000000) with white text (#FFFFFF)
- * - Minimalist, institutional aesthetic
- * - Four link cards with subtle borders (#333333)
- * - Hover state: border brightens to white, background shifts to #111111
- * - No decorative elements, no gradients, no clutter
- * - Spacing and typography convey hierarchy and premium positioning
+ * Design Philosophy (Ornn-inspired minimalism):
+ * - Ultra-minimalist centered layout with ample whitespace
+ * - Infrastructure image as darkened/transparent background
+ * - No borders, no cards, no visual containers
+ * - Four text links centered, elegant line spacing
+ * - Pure typography-driven design
+ * - Subtle hover effects (text color shift)
  */
 
-interface LinkCard {
-  number: string;
+interface LinkItem {
   title: string;
   subtitle: string;
   href: string;
 }
 
-const linkCards: LinkCard[] = [
+const links: LinkItem[] = [
   {
-    number: "01",
     title: "Live Demo",
     subtitle: "Request access to the latest ACUindex demo.",
     href: "#demo",
   },
   {
-    number: "02",
     title: "Web BP",
     subtitle: "View the latest investor presentation.",
     href: "#bp",
   },
   {
-    number: "03",
     title: "Methodology / Whitepaper",
     subtitle: "Read the ACU methodology and protocol draft.",
     href: "#methodology",
   },
   {
-    number: "04",
     title: "Contact / Schedule a Call",
     subtitle: "Contact the team or schedule a discussion.",
     href: "#contact",
@@ -47,89 +40,86 @@ const linkCards: LinkCard[] = [
 ];
 
 export default function Home() {
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col">
-      {/* Header with logo */}
-      <header className="pt-8 px-8 md:pt-12 md:px-12">
-        <div className="text-xl md:text-2xl font-light tracking-wide">
-          ACUindex
-        </div>
-      </header>
+    <div
+      className="min-h-screen w-full flex flex-col items-center justify-center px-6 md:px-12 py-16 md:py-24 relative overflow-hidden"
+      style={{
+        backgroundImage: "url('/manus-storage/acuindex-bg-infrastructure_c130dcce.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      {/* Darkened overlay to reduce image prominence */}
+      <div className="absolute inset-0 bg-black/70"></div>
 
-      {/* Main content */}
-      <main className="flex-1 flex flex-col justify-center px-8 md:px-12 py-16 md:py-24">
-        {/* Title section */}
-        <div className="max-w-3xl mb-20 md:mb-32">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight">
-            Investor Room
+      {/* Content container */}
+      <div className="relative z-10 w-full max-w-2xl text-center">
+        {/* Header */}
+        <div className="mb-20 md:mb-32">
+          <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mb-6">
+            ACUindex
           </h1>
-          <p className="text-lg md:text-xl text-gray-400 mb-8">
+          <p className="text-lg md:text-xl text-gray-300 mb-2">
+            Investor Room
+          </p>
+          <p className="text-base md:text-lg text-gray-400">
             投资者关系维护与里程碑更新
           </p>
+        </div>
 
-          {/* Divider line */}
-          <div className="w-full h-px bg-gray-700 mb-8"></div>
+        {/* Divider */}
+        <div className="w-24 h-px bg-gray-600 mx-auto mb-16 md:mb-20"></div>
 
-          {/* Tagline */}
-          <p className="text-base md:text-lg text-gray-300 mb-6">
+        {/* Tagline and description */}
+        <div className="mb-20 md:mb-28 space-y-6">
+          <p className="text-base md:text-lg text-gray-300 font-light">
             Quality-Constrained AI Cost Optimization Infrastructure
           </p>
-          <p className="text-base md:text-lg text-gray-300 mb-8">
+          <p className="text-base md:text-lg text-gray-300 font-light">
             质量约束下的 AI 调用降本与产能优化系统
           </p>
-
-          {/* Description */}
-          <p className="text-sm md:text-base text-gray-400 leading-relaxed">
+          <p className="text-sm md:text-base text-gray-400 leading-relaxed font-light max-w-xl mx-auto">
             ACUindex is building an AI productivity optimization infrastructure for high-frequency AI workloads.
             We help teams route tasks across models, verify output quality, and reduce model/API costs while preserving production-grade results.
           </p>
         </div>
 
-        {/* Link cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mb-16">
-          {linkCards.map((card, index) => (
+        {/* Divider */}
+        <div className="w-24 h-px bg-gray-600 mx-auto mb-20 md:mb-28"></div>
+
+        {/* Links - centered, no borders, elegant spacing */}
+        <div className="space-y-12 md:space-y-16">
+          {links.map((link, index) => (
             <a
               key={index}
-              href={card.href}
-              onMouseEnter={() => setHoveredCard(index)}
-              onMouseLeave={() => setHoveredCard(null)}
-              className="group relative"
+              href={link.href}
+              className="group block transition-all duration-300 ease-out"
             >
-              <div
-                className={`
-                  p-6 md:p-8 border transition-all duration-200 ease-out
-                  ${
-                    hoveredCard === index
-                      ? "border-white bg-gray-950"
-                      : "border-gray-700 bg-black"
-                  }
-                `}
-              >
-                <div className="text-xs md:text-sm text-gray-500 mb-3 tracking-widest">
-                  {card.number}
-                </div>
-                <h3 className="text-lg md:text-xl font-semibold mb-3 text-white">
-                  {card.title}
+              <div className="space-y-2">
+                <h3 className="text-lg md:text-xl font-light text-white group-hover:text-gray-300 transition-colors duration-300">
+                  {link.title}
                 </h3>
-                <p className="text-sm md:text-base text-gray-400">
-                  {card.subtitle}
+                <p className="text-sm md:text-base text-gray-400 group-hover:text-gray-300 transition-colors duration-300 font-light">
+                  {link.subtitle}
                 </p>
               </div>
             </a>
           ))}
         </div>
 
+        {/* Divider */}
+        <div className="w-24 h-px bg-gray-600 mx-auto my-20 md:my-28"></div>
+
         {/* Footer info */}
-        <div className="text-xs md:text-sm text-gray-600 space-y-2">
+        <div className="text-xs md:text-sm text-gray-500 space-y-1 font-light">
           <p>Status: Demo validation stage</p>
           <p>Last updated: 2026.06</p>
           <p className="mt-4">
             Not for settlement. Internal benchmark results are for product validation only.
           </p>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

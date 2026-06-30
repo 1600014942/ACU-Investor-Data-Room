@@ -4,57 +4,94 @@ import { useState } from "react";
  * ACUindex Investor Room
  * 
  * Design Philosophy:
- * - Pure black background (#000000) with white text (#FFFFFF)
+ * - Pure black background with white text
+ * - Logo in top-left corner
+ * - Language toggle (EN/CN) in top-right corner
+ * - Content changes based on language selection
+ * - Four link cards with subtle borders
  * - Minimalist, institutional aesthetic
- * - Four link cards with subtle borders (#333333)
- * - Hover state: border brightens to white, background shifts to #111111
- * - No decorative elements, no gradients, no clutter
- * - Spacing and typography convey hierarchy and premium positioning
  */
 
 interface LinkCard {
-  number: string;
-  title: string;
-  subtitle: string;
+  titleEn: string;
+  titleZh: string;
+  subtitleEn: string;
+  subtitleZh: string;
   href: string;
 }
 
 const linkCards: LinkCard[] = [
   {
-    number: "01",
-    title: "Live Demo",
-    subtitle: "Request access to the latest ACUindex demo.",
+    titleEn: "Live Demo",
+    titleZh: "Live Demo",
+    subtitleEn: "Request access to the latest ACUindex demo.",
+    subtitleZh: "申请访问最新的 ACUindex 演示。",
     href: "#demo",
   },
   {
-    number: "02",
-    title: "Web BP",
-    subtitle: "View the latest investor presentation.",
+    titleEn: "Web BP",
+    titleZh: "Web BP",
+    subtitleEn: "View the latest investor presentation.",
+    subtitleZh: "查看最新的投资者演讲稿。",
     href: "#bp",
   },
   {
-    number: "03",
-    title: "Methodology / Whitepaper",
-    subtitle: "Read the ACU methodology and protocol draft.",
+    titleEn: "Methodology / Whitepaper",
+    titleZh: "方法论 / 白皮书",
+    subtitleEn: "Read the ACU methodology and protocol draft.",
+    subtitleZh: "阅读 ACU 方法论和协议草案。",
     href: "#methodology",
   },
   {
-    number: "04",
-    title: "Contact / Schedule a Call",
-    subtitle: "Contact the team or schedule a discussion.",
+    titleEn: "Contact / Schedule a Call",
+    titleZh: "联系 / 预约通话",
+    subtitleEn: "Contact the team or schedule a discussion.",
+    subtitleZh: "联系团队或安排讨论。",
     href: "#contact",
   },
 ];
 
 export default function Home() {
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [language, setLanguage] = useState<"en" | "zh">("en");
+
+  const isEnglish = language === "en";
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
-      {/* Header with logo */}
-      <header className="pt-8 px-8 md:pt-12 md:px-12">
-        <div className="text-xl md:text-2xl font-light tracking-wide">
-          ACUindex
+      {/* Header with logo and language toggle */}
+      <header className="flex items-center justify-between pt-8 px-8 md:pt-12 md:px-12">
+        {/* Logo */}
+        <div className="h-12 md:h-14">
+          <img
+            src="/manus-storage/ACUindexLOGO_7e5d6b71.png"
+            alt="ACUindex Logo"
+            className="h-full object-contain"
+          />
+        </div>
+
+        {/* Language Toggle */}
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => setLanguage("en")}
+            className={`px-3 py-2 text-sm md:text-base font-medium transition-colors duration-200 ${
+              isEnglish
+                ? "text-white border-b-2 border-white"
+                : "text-gray-500 hover:text-gray-300"
+            }`}
+          >
+            EN
+          </button>
+          <div className="w-px h-6 bg-gray-600"></div>
+          <button
+            onClick={() => setLanguage("zh")}
+            className={`px-3 py-2 text-sm md:text-base font-medium transition-colors duration-200 ${
+              !isEnglish
+                ? "text-white border-b-2 border-white"
+                : "text-gray-500 hover:text-gray-300"
+            }`}
+          >
+            中文
+          </button>
         </div>
       </header>
 
@@ -63,27 +100,29 @@ export default function Home() {
         {/* Title section */}
         <div className="max-w-3xl mb-20 md:mb-32">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight">
-            Investor Room
+            {isEnglish ? "Investor Room" : "投资者关系维护"}
           </h1>
           <p className="text-lg md:text-xl text-gray-400 mb-8">
-            投资者关系维护与里程碑更新
+            {isEnglish
+              ? "Milestone Update"
+              : "与里程碑更新"}
           </p>
 
           {/* Divider line */}
           <div className="w-full h-px bg-gray-700 mb-8"></div>
 
           {/* Tagline */}
-          <p className="text-base md:text-lg text-gray-300 mb-6">
-            Quality-Constrained AI Cost Optimization Infrastructure
-          </p>
           <p className="text-base md:text-lg text-gray-300 mb-8">
-            质量约束下的 AI 调用降本与产能优化系统
+            {isEnglish
+              ? "Unleash Maximum AI Productive Capacity"
+              : "释放每一滴算力的最大产能"}
           </p>
 
           {/* Description */}
           <p className="text-sm md:text-base text-gray-400 leading-relaxed">
-            ACUindex is building an AI productivity optimization infrastructure for high-frequency AI workloads.
-            We help teams route tasks across models, verify output quality, and reduce model/API costs while preserving production-grade results.
+            {isEnglish
+              ? "ACUindex uses ACU (AI Capacity Unit) as the core metric, unifying model capabilities, token consumption, API calls, agent workflows, and enterprise task requirements into an ACU resource allocation infrastructure, helping customers achieve maximum productive capacity within the same budget."
+              : "ACUindex 以 ACU 为核心计量单位，将模型能力、Token 消耗、API 调用、Agent 工作流和企业任务需求，统一到 ACU 算力资源配置基础设施中，帮助客户在同等预算下，获得最大化有效产能。"}
           </p>
         </div>
 
@@ -93,28 +132,22 @@ export default function Home() {
             <a
               key={index}
               href={card.href}
-              onMouseEnter={() => setHoveredCard(index)}
-              onMouseLeave={() => setHoveredCard(null)}
               className="group relative"
             >
               <div
                 className={`
                   p-6 md:p-8 border transition-all duration-200 ease-out
-                  ${
-                    hoveredCard === index
-                      ? "border-white bg-gray-950"
-                      : "border-gray-700 bg-black"
-                  }
+                  border-gray-700 bg-black hover:border-white hover:bg-gray-950
                 `}
               >
                 <div className="text-xs md:text-sm text-gray-500 mb-3 tracking-widest">
-                  {card.number}
+                  {String(index + 1).padStart(2, "0")}
                 </div>
                 <h3 className="text-lg md:text-xl font-semibold mb-3 text-white">
-                  {card.title}
+                  {isEnglish ? card.titleEn : card.titleZh}
                 </h3>
                 <p className="text-sm md:text-base text-gray-400">
-                  {card.subtitle}
+                  {isEnglish ? card.subtitleEn : card.subtitleZh}
                 </p>
               </div>
             </a>
@@ -123,10 +156,20 @@ export default function Home() {
 
         {/* Footer info */}
         <div className="text-xs md:text-sm text-gray-600 space-y-2">
-          <p>Status: Demo validation stage</p>
-          <p>Last updated: 2026.06</p>
+          <p>
+            {isEnglish
+              ? "Status: Demo validation stage"
+              : "状态：演示验证阶段"}
+          </p>
+          <p>
+            {isEnglish
+              ? "Last updated: 2026.06"
+              : "最后更新：2026.06"}
+          </p>
           <p className="mt-4">
-            Not for settlement. Internal benchmark results are for product validation only.
+            {isEnglish
+              ? "Not for settlement. Internal benchmark results are for product validation only."
+              : "不作为结算依据。内部基准测试结果仅用于产品验证。"}
           </p>
         </div>
       </main>

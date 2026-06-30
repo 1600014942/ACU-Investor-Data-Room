@@ -159,13 +159,13 @@ export default function Home() {
         <div className="text-xs md:text-sm text-gray-600 space-y-2">
           <p>
             {isEnglish
-              ? "Status: Demo validation stage"
-              : "状态：演示验证阶段"}
+              ? "Status: Small-scale initial demo validation completed. Large-scale and clustered testing experiments in progress."
+              : "状态：小规模原初Demo验证已通过，规模化、集群化测试实验进行中"}
           </p>
           <p>
             {isEnglish
-              ? "Last updated: 2026.06"
-              : "最后更新：2026.06"}
+              ? "Last updated: 2026.06.30"
+              : "最后更新：2026.06.30"}
           </p>
           <p className="mt-4">
             {isEnglish

@@ -166,20 +166,21 @@ export default function Home() {
                 ? "Last updated: 2026.06.30"
                 : "最后更新：2026.06.30"}
             </p>
-            <p className="mt-4">
+            <p>
               {isEnglish
                 ? "Not for settlement. Internal benchmark results are for product validation only."
                 : "不作为结算依据。内部基准测试结果仅用于产品验证。"}
             </p>
-
-            {/* Contact details */}
-            <div className="mt-6 pt-6 border-t border-gray-800 text-xs text-gray-500 space-y-1">
-              <p className="font-light">{isEnglish ? "Contact:" : "联系方式："}</p>
-              <p>Email: cmk23@mails.tsinghua.edu.cn</p>
-              <p>Email: 1600014942@pku.edu.cn</p>
-              <p>Phone: (+86) 18801153964</p>
-              <p>Phone: (+44) 07719164461</p>
-            </div>
+            <p>
+              {isEnglish
+                ? "Email: cmk23@mails.tsinghua.edu.cn；1600014942@pku.edu.cn"
+                : "Email: cmk23@mails.tsinghua.edu.cn；1600014942@pku.edu.cn"}
+            </p>
+            <p>
+              {isEnglish
+                ? "Phone: (+86) 18801153964；(+44) 07719164461"
+                : "Phone: (+86) 18801153964；(+44) 07719164461"}
+            </p>
           </div>
         </div>
       </section>

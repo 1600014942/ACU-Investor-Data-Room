@@ -117,26 +117,37 @@ export default function Home() {
         <div className={`relative z-10 ${maxWidthClass} ${paddingClass} w-full`}>
           {/* Link items - centered text with consistent spacing */}
           <div className="space-y-6 md:space-y-8 lg:space-y-10 mb-12 md:mb-16 lg:mb-20 text-center">
+            {/* 01 Pitch Deck */}
             <a
-              href="#demo"
+              href="https://www.papermark.com/view/cmr0b4uf400f5l504a5d1yltw"
+              target="_blank"
+              rel="noopener noreferrer"
               className="block text-sm md:text-base lg:text-lg text-gray-300 hover:text-white transition-colors duration-200"
             >
-              <span className="text-gray-500 font-light">01</span> {isEnglish ? "Demo" : "Demo"}：{isEnglish ? "Request access to the latest product demo" : "申请访问最新产品演示"}
+              <span className="text-gray-500 font-light">01</span> {isEnglish ? "Pitch Deck" : "Pitch Deck"}：{isEnglish ? "View the latest presentation" : "查看最新路演讲稿"}
             </a>
+
+            {/* 02 Engineering Whitepaper */}
             <a
-              href="#whitepaper"
+              href="https://zenodo.org/records/20628329?preview_file=AcuIndex_Whitepaper_v0.2.4.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="block text-sm md:text-base lg:text-lg text-gray-300 hover:text-white transition-colors duration-200"
             >
               <span className="text-gray-500 font-light">02</span> {isEnglish ? "Engineering Whitepaper" : "工程白皮书"}：{isEnglish ? "Methodology and computational details" : "方法论和计算细节"}
             </a>
+
+            {/* 03 Demo */}
             <a
-              href="#pitch"
+              href="mailto:cmk23@mails.tsinghua.edu.cn,1600014942@pku.edu.cn?subject=ACUindex%20Demo%20Request"
               className="block text-sm md:text-base lg:text-lg text-gray-300 hover:text-white transition-colors duration-200"
             >
-              <span className="text-gray-500 font-light">03</span> {isEnglish ? "Pitch Deck" : "Pitch Deck"}：{isEnglish ? "View the latest presentation" : "查看最新路演讲稿"}
+              <span className="text-gray-500 font-light">03</span> {isEnglish ? "Demo" : "Demo"}：{isEnglish ? "Request access to the latest product demo" : "申请访问最新产品演示"}
             </a>
+
+            {/* 04 Contact */}
             <a
-              href="#contact"
+              href="mailto:cmk23@mails.tsinghua.edu.cn?subject=ACUindex%20Business%20Inquiry"
               className="block text-sm md:text-base lg:text-lg text-gray-300 hover:text-white transition-colors duration-200"
             >
               <span className="text-gray-500 font-light">04</span> {isEnglish ? "Contact / Schedule a Meeting" : "联系我们 / 预约会议"}：{isEnglish ? "Business cooperation" : "商务合作"}
@@ -160,6 +171,15 @@ export default function Home() {
                 ? "Not for settlement. Internal benchmark results are for product validation only."
                 : "不作为结算依据。内部基准测试结果仅用于产品验证。"}
             </p>
+
+            {/* Contact details */}
+            <div className="mt-6 pt-6 border-t border-gray-800 text-xs text-gray-500 space-y-1">
+              <p className="font-light">{isEnglish ? "Contact:" : "联系方式："}</p>
+              <p>Email: cmk23@mails.tsinghua.edu.cn</p>
+              <p>Email: 1600014942@pku.edu.cn</p>
+              <p>Phone: (+86) 18801153964</p>
+              <p>Phone: (+44) 07719164461</p>
+            </div>
           </div>
         </div>
       </section>

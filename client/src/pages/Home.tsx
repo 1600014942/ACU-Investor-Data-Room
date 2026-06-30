@@ -7,7 +7,8 @@ import { useState } from "react";
  * - Pure black background with white text
  * - Logo in top-left corner
  * - Language toggle (EN/CN) in top-right corner
- * - Content changes based on language selection
+ * - Unified "Investor Relationship & Milestone Update" as core concept
+ * - Not positioned as a fundraising page, but as a product/milestone tracking platform
  * - Four link cards with subtle borders
  * - Minimalist, institutional aesthetic
  */
@@ -97,16 +98,27 @@ export default function Home() {
 
       {/* Main content */}
       <main className="flex-1 flex flex-col justify-center px-8 md:px-12 py-16 md:py-24">
-        {/* Title section */}
+        {/* Title section - unified concept */}
         <div className="max-w-3xl mb-20 md:mb-32">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight">
-            {isEnglish ? "Investor Room" : "投资者关系维护"}
-          </h1>
-          <p className="text-lg md:text-xl text-gray-400 mb-8">
-            {isEnglish
-              ? "Milestone Update"
-              : "与里程碑更新"}
-          </p>
+          {/* Main title with integrated subtitle */}
+          <div className="mb-8">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-3">
+              {isEnglish ? "ACUindex" : "ACUindex"}
+            </h1>
+            <div className="flex flex-col md:flex-row md:items-baseline md:gap-4 gap-2">
+              <p className="text-2xl md:text-3xl font-light text-gray-300">
+                {isEnglish
+                  ? "Investor Relationship"
+                  : "投资者关系"}
+              </p>
+              <div className="hidden md:block w-px h-8 bg-gray-600"></div>
+              <p className="text-2xl md:text-3xl font-light text-gray-300">
+                {isEnglish
+                  ? "Milestone Update"
+                  : "与里程碑更新"}
+              </p>
+            </div>
+          </div>
 
           {/* Divider line */}
           <div className="w-full h-px bg-gray-700 mb-8"></div>

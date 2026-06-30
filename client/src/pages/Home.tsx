@@ -102,7 +102,7 @@ export default function Home() {
         <div className="max-w-3xl mb-20 md:mb-32">
           {/* Main integrated title */}
           <div className="mb-12">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight mb-4 leading-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight mb-4 leading-tight">
               {isEnglish
                 ? "Investor Relationship & Milestone Update"
                 : "投资者关系与里程碑更新"}

@@ -116,7 +116,7 @@ export default function Home() {
         {/* Content */}
         <div className={`relative z-10 ${maxWidthClass} ${paddingClass} w-full`}>
           {/* Link items - centered text with consistent spacing */}
-          <div className="space-y-6 md:space-y-8 lg:space-y-10 mb-12 md:mb-16 lg:mb-20">
+          <div className="space-y-6 md:space-y-8 lg:space-y-10 mb-12 md:mb-16 lg:mb-20 text-center">
             <a
               href="#demo"
               className="block text-sm md:text-base lg:text-lg text-gray-300 hover:text-white transition-colors duration-200"

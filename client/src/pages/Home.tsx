@@ -4,12 +4,13 @@ import { useState } from "react";
  * ACUindex Investor Room
  * 
  * Design Philosophy:
- * - Pure black background with white text
- * - Logo in top-left corner
- * - Language toggle (EN/CN) in top-right corner
- * - Content changes based on language selection
+ * - Logo in top-left (contains ACUindex branding)
+ * - No duplicate text title - logo is the brand
+ * - "Investor Relationship & Milestone Update" as integrated, elegant concept
+ * - Language toggle (EN/CN) in top-right
+ * - Content switches cleanly by language
  * - Four link cards with subtle borders
- * - Minimalist, institutional aesthetic
+ * - Pure black institutional aesthetic
  */
 
 interface LinkCard {
@@ -97,16 +98,16 @@ export default function Home() {
 
       {/* Main content */}
       <main className="flex-1 flex flex-col justify-center px-8 md:px-12 py-16 md:py-24">
-        {/* Title section */}
+        {/* Title section - integrated concept without duplicate branding */}
         <div className="max-w-3xl mb-20 md:mb-32">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight">
-            {isEnglish ? "Investor Room" : "投资者关系维护"}
-          </h1>
-          <p className="text-lg md:text-xl text-gray-400 mb-8">
-            {isEnglish
-              ? "Milestone Update"
-              : "与里程碑更新"}
-          </p>
+          {/* Main integrated title */}
+          <div className="mb-12">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight mb-4 leading-tight">
+              {isEnglish
+                ? "Investor Relationship & Milestone Update"
+                : "投资者关系与里程碑更新"}
+            </h1>
+          </div>
 
           {/* Divider line */}
           <div className="w-full h-px bg-gray-700 mb-8"></div>

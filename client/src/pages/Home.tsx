@@ -1,10 +1,12 @@
 import { useState } from "react";
 
 /**
- * ACUindex Investor Room - Two Section Layout
+ * ACUindex Investor Room - Two Section Layout (PPT-inspired)
  * 
- * Section 1 (Hero): Cabinet background image with header and intro content
- * Section 2 (Cards): Black background with Ornn-style vertical line pattern
+ * Section 1 (Hero): 
+ *   - Header: Pure black background with logo and language toggle
+ *   - Content: Cabinet background image with title, description
+ * Section 2 (Cards): Black background with Ornn-style vertical lines
  */
 
 interface LinkCard {
@@ -54,20 +56,9 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
       {/* SECTION 1: HERO WITH CABINET BACKGROUND */}
-      <section
-        className="relative min-h-screen flex flex-col"
-        style={{
-          backgroundImage: "url(/manus-storage/pasted_file_nvBsIG_image_a57703fc.png)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
-      >
-        {/* Dark overlay to ensure readability */}
-        <div className="absolute inset-0 bg-black/40"></div>
-
-        {/* Header */}
-        <header className="relative flex items-center justify-between pt-8 px-8 md:pt-12 md:px-12 z-10">
+      <section className="relative min-h-screen flex flex-col">
+        {/* Header - Pure Black Background */}
+        <header className="relative bg-black flex items-center justify-between pt-8 px-8 md:pt-12 md:px-12 pb-8 md:pb-12 z-20 border-b border-gray-800">
           {/* Logo */}
           <div className="h-12 md:h-14">
             <img
@@ -103,9 +94,21 @@ export default function Home() {
           </div>
         </header>
 
-        {/* Hero Content */}
-        <div className="relative flex-1 flex flex-col justify-center px-8 md:px-12 py-16 md:py-24 z-10">
-          <div className="max-w-3xl">
+        {/* Hero Content with Cabinet Background */}
+        <div
+          className="relative flex-1 flex flex-col justify-center px-8 md:px-12 py-16 md:py-24"
+          style={{
+            backgroundImage: "url(/manus-storage/pasted_file_nvBsIG_image_a57703fc.png)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundAttachment: "fixed",
+          }}
+        >
+          {/* Dark overlay to ensure readability */}
+          <div className="absolute inset-0 bg-black/35"></div>
+
+          {/* Content */}
+          <div className="relative z-10 max-w-3xl">
             {/* Main integrated title */}
             <div className="mb-12">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight mb-4 leading-tight">

@@ -138,76 +138,40 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 2: CARDS WITH ORNN-STYLE VERTICAL LINES */}
-      <section className="relative bg-black py-24 px-8 md:px-12">
-        {/* Ornn-style vertical lines background */}
-        <div className="absolute inset-0 overflow-hidden opacity-30">
-          <svg
-            className="w-full h-full"
-            preserveAspectRatio="none"
-            viewBox="0 0 1200 800"
-          >
-            {/* Vertical lines pattern - Ornn style */}
-            {[...Array(40)].map((_, i) => (
-              <line
-                key={i}
-                x1={i * 30}
-                y1="0"
-                x2={i * 30}
-                y2="800"
-                stroke="#333333"
-                strokeWidth="1"
-                opacity={Math.random() * 0.5 + 0.3}
-              />
-            ))}
-            {/* Additional accent lines for depth */}
-            {[...Array(8)].map((_, i) => (
-              <line
-                key={`accent-${i}`}
-                x1={i * 150}
-                y1="0"
-                x2={i * 150}
-                y2="800"
-                stroke="#444444"
-                strokeWidth="2"
-                opacity="0.4"
-              />
-            ))}
-          </svg>
-        </div>
-
+      {/* SECTION 2: SIMPLIFIED CENTERED TEXT LINKS */}
+      <section className="relative bg-black py-32 px-8 md:px-12 flex flex-col justify-center items-center min-h-screen">
         {/* Content */}
-        <div className="relative z-10 max-w-6xl mx-auto">
-          {/* Link cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-16">
-            {linkCards.map((card, index) => (
-              <a
-                key={index}
-                href={card.href}
-                className="group relative"
-              >
-                <div
-                  className={`
-                    p-6 md:p-8 border transition-all duration-200 ease-out
-                    border-gray-700 bg-black/50 backdrop-blur-sm hover:border-white hover:bg-gray-950/80
-                  `}
-                >
-                  <div className="text-xs md:text-sm text-gray-500 mb-3 tracking-widest">
-                    {String(index + 1).padStart(2, "0")}
-                  </div>
-                  <h3 className="text-lg md:text-xl font-semibold mb-3 text-white">
-                    {isEnglish ? card.titleEn : card.titleZh}
-                  </h3>
-                  <p className="text-sm md:text-base text-gray-400">
-                    {isEnglish ? card.subtitleEn : card.subtitleZh}
-                  </p>
-                </div>
-              </a>
-            ))}
+        <div className="relative z-10 max-w-2xl w-full text-center">
+          {/* Link items - centered text */}
+          <div className="space-y-8 md:space-y-12 mb-16 md:mb-24">
+            <a
+              href="#demo"
+              className="block text-base md:text-lg text-gray-300 hover:text-white transition-colors duration-200"
+            >
+              <span className="text-gray-500">01</span> {isEnglish ? "Demo" : "Demo"}：{isEnglish ? "Request access to the latest product demo" : "申请访问最新产品演示"}
+            </a>
+            <a
+              href="#whitepaper"
+              className="block text-base md:text-lg text-gray-300 hover:text-white transition-colors duration-200"
+            >
+              <span className="text-gray-500">02</span> {isEnglish ? "Engineering Whitepaper" : "工程白皮书"}：{isEnglish ? "Methodology and computational details" : "方法论和计算细节"}
+            </a>
+            <a
+              href="#pitch"
+              className="block text-base md:text-lg text-gray-300 hover:text-white transition-colors duration-200"
+            >
+              <span className="text-gray-500">03</span> {isEnglish ? "Pitch Deck" : "Pitch Deck"}：{isEnglish ? "View the latest presentation" : "查看最新路演讲稿"}
+            </a>
+            <a
+              href="#contact"
+              className="block text-base md:text-lg text-gray-300 hover:text-white transition-colors duration-200"
+            >
+              <span className="text-gray-500">04</span> {isEnglish ? "Contact / Schedule a Meeting" : "联系我们 / 预约会议"}：{isEnglish ? "Business cooperation" : "商务合作"}
+            </a>
           </div>
 
           {/* Footer info */}
-          <div className="text-xs md:text-sm text-gray-600 space-y-2">
+          <div className="text-xs md:text-sm text-gray-600 space-y-2 border-t border-gray-800 pt-8 md:pt-12">
             <p>
               {isEnglish
                 ? "Status: Small-scale initial demo validation completed. Large-scale and clustered testing experiments in progress."

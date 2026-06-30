@@ -111,9 +111,9 @@ export default function Home() {
           <div className="relative z-10 max-w-3xl">
             {/* Main integrated title */}
             <div className="mb-12">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight mb-4 leading-tight">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-light tracking-tight mb-4 leading-tight whitespace-nowrap">
                 {isEnglish
-                  ? "Investor Relationship & Milestone Update"
+                  ? "Investor Data Room & Milestone Update"
                   : "投资者关系与里程碑更新"}
               </h1>
             </div>
